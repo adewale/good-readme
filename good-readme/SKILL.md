@@ -4,7 +4,7 @@ description: Create and improve README documents for GitHub projects. Use when t
 license: MIT
 metadata:
   author: adewale
-  version: "1.0.0"
+  version: "0.1.0"
 ---
 
 # good-readme
