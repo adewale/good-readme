@@ -1,0 +1,5 @@
+{
+  "name": "good-readme",
+  "description": "A Claude Code skill for writing and improving GitHub README documents.",
+  "skills": ["good-readme"]
+}
