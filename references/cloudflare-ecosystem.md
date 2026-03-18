@@ -144,13 +144,38 @@ READMEs should document:
 - Steps to create required resources (D1 databases, KV namespaces, R2 buckets) with IDs copied into Wrangler config
 - How to set `account_id` in `wrangler.toml`/`wrangler.json` or as a GitHub Action input
 - Local development setup using `.dev.vars` for secrets
+- Include a `.dev.vars.example` file in the repo (dotenv format) documenting required secrets without exposing values
 
 ## Deployment Patterns
 
-- **Primary**: `npx wrangler deploy` (or `wrangler pages deploy` for Pages projects)
-- Show both dashboard and CLI approaches when applicable
-- Document CI/CD integration (especially with `cloudflare/wrangler-action`)
-- Include dry-run verification: `npx wrangler deploy --dry-run --outdir dist`
+Three tiers of deployment documentation:
+
+### Tier 1 — One-Click Deploy Button (recommended)
+
+Cloudflare provides an official "Deploy to Cloudflare" button that auto-provisions KV namespaces, D1 databases, R2 buckets, and other resources by reading `wrangler.toml`:
+
+```markdown
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=<YOUR_GIT_REPO_URL>)
+```
+
+Limitation: only supports Workers apps (not Pages), only github.com and gitlab.com.
+
+### Tier 2 — CLI Deployment
+
+```bash
+npm create cloudflare@latest  # scaffold new project
+npm install
+# configure wrangler.toml
+wrangler deploy
+```
+
+For Pages: `wrangler pages deploy`.
+
+Include dry-run verification: `npx wrangler deploy --dry-run --outdir dist`.
+
+### Tier 3 — CI/CD with GitHub Actions
+
+Uses `cloudflare/wrangler-action@v3` with `CLOUDFLARE_API_TOKEN` and `accountId` stored as GitHub secrets. Warn against storing API tokens in the repository.
 
 ## Testing Documentation
 
@@ -213,6 +238,11 @@ A Cloudflare ecosystem project is a good citizen when its README:
 8. **Points to Discord for community support** — the primary Cloudflare community channel
 9. **Follows the minimalist badge convention** — 2-5 badges, no badge walls
 10. **Keeps the README as an entry point** — not an exhaustive reference; link to deeper docs
+11. **Includes a Deploy to Cloudflare button** — one-click deployability is the strongest community signal
+12. **Provides a live demo link** — community awesome lists highlight projects with working demos
+13. **Works within the free tier** — the most popular community projects emphasize free-tier compatibility
+14. **Shows maintenance status** — indicate whether the project is actively maintained, in maintenance mode, or archived
+15. **Respects Cloudflare trademarks** — use "compatible with Cloudflare Workers," never "Cloudflare-MyApp"
 
 ## Sources
 
@@ -229,3 +259,8 @@ A Cloudflare ecosystem project is a good citizen when its README:
 - [Cloudflare Sponsorships](https://developers.cloudflare.com/sponsorships/)
 - [Make a README](https://www.makeareadme.com/)
 - [Standard Readme Specification](https://github.com/RichardLitt/standard-readme/blob/main/spec.md)
+- [Cloudflare Trademark Guidelines](https://www.cloudflare.com/trademark/)
+- [Deploy to Cloudflare Buttons](https://developers.cloudflare.com/workers/platform/deploy-buttons/)
+- [awesome-cloudflare (zhuima)](https://github.com/zhuima/awesome-cloudflare)
+- [awesome-cloudflare (irazasyed)](https://github.com/irazasyed/awesome-cloudflare)
+- [awesome-cloudflare-workers (lukeed)](https://github.com/lukeed/awesome-cloudflare-workers)
