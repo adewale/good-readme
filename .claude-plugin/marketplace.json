@@ -1,0 +1,11 @@
+{
+  "name": "good-readme",
+  "description": "A Claude Code skill for writing and improving GitHub README documents.",
+  "plugins": [
+    {
+      "name": "good-readme",
+      "source": "./",
+      "skills": ["./skills/good-readme"]
+    }
+  ]
+}

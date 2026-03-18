@@ -75,11 +75,11 @@ The improve mode scores your README across six categories and returns a structur
 
 | File | Purpose |
 |------|---------|
-| `good-readme/SKILL.md` | Skill definition — philosophy, modes, and workflow checklists |
-| `good-readme/references/anatomy.md` | Section-by-section guide for every part of a README |
-| `good-readme/references/examples.md` | Patterns extracted from well-regarded open-source projects |
-| `good-readme/references/quality-checklist.md` | 22-criterion scoring rubric (100-point scale) |
-| `good-readme/references/anti-patterns.md` | 15 common README mistakes and how to fix them |
+| `skills/good-readme/SKILL.md` | Skill definition — philosophy, modes, and workflow checklists |
+| `skills/good-readme/references/anatomy.md` | Section-by-section guide for every part of a README |
+| `skills/good-readme/references/examples.md` | Patterns extracted from well-regarded open-source projects |
+| `skills/good-readme/references/quality-checklist.md` | 22-criterion scoring rubric (100-point scale) |
+| `skills/good-readme/references/anti-patterns.md` | 15 common README mistakes and how to fix them |
 
 ## Contributing
 

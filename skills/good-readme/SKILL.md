@@ -2,6 +2,11 @@
 name: good-readme
 description: Create and improve README documents for GitHub projects. Use when the user wants to write a new README, improve an existing one, audit README quality, or asks about documentation best practices for their repository.
 license: MIT
+references:
+  - references/anatomy.md
+  - references/examples.md
+  - references/quality-checklist.md
+  - references/anti-patterns.md
 metadata:
   author: adewale
   version: "0.1.0"
