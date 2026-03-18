@@ -22,7 +22,7 @@ metadata:
 
 **Bad READMEs** are walls of text with no structure, auto-generated boilerplate nobody reads, or sparse one-liners that force readers to dig through source code. Equally bad: over-documented READMEs that duplicate what's in `/docs` or include every API method inline.
 
-See [anatomy.md](references/anatomy.md) for section-by-section guidance, [examples.md](references/examples.md) for patterns from well-regarded projects, and [anti-patterns.md](references/anti-patterns.md) for common mistakes.
+See [anatomy.md](references/anatomy.md) for section-by-section guidance, [examples.md](references/examples.md) for patterns from well-regarded projects, [anti-patterns.md](references/anti-patterns.md) for common mistakes, and [cloudflare.md](references/cloudflare.md) for Cloudflare ecosystem conventions.
 
 ## Modes
 
@@ -93,24 +93,4 @@ For projects with a README that needs enhancement.
 [ ] Badges are useful, not decorative
 [ ] License is stated
 [ ] Contributing section exists if accepting contributions
-```
-
-## Cloudflare Ecosystem Checklist
-
-When the project targets the Cloudflare platform, also apply these checks. See [cloudflare-ecosystem.md](../references/cloudflare-ecosystem.md) for full guidance.
-
-```
-[ ] Includes a Deploy to Cloudflare button
-    [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=<REPO_URL>)
-    — one-click deployability is the strongest community signal
-[ ] States free-tier compatibility
-    — indicate whether the project runs entirely on the free tier, or list which paid features are required
-[ ] Declares which Cloudflare primitives it uses
-    — Workers, Pages, R2, D1, KV, Queues, Durable Objects, etc. in a compatibility table or list
-[ ] Links to official docs at developers.cloudflare.com
-    — link to specific pages (not just the homepage); don't duplicate what the docs already cover
-[ ] Provides a live demo link
-    — community awesome lists prioritize projects with working demos; deploy one on Workers/Pages
-[ ] Shows maintenance status
-    — indicate whether the project is actively maintained, in maintenance mode, or archived
 ```
