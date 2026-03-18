@@ -186,6 +186,19 @@ Technical projects should specify:
 - Build dependencies
 - Use tabular format with tier distinctions when applicable
 
+## Trademark Guidelines
+
+Cloudflare's trademark rules are strict and explicit for third-party projects:
+
+- **Never use "Cloudflare" as part of a product or brand name**, joined with a hyphen, or in app names
+- Use referential phrases instead: "runs on," "for use with," "for," or "compatible with"
+- Never imply Cloudflare affiliation, endorsement, or sponsorship without written permission
+- Always capitalize "Cloudflare" and never alter its spelling
+- Do not use Cloudflare trademarks in domain names, meta tags, or SEO keywords
+- If using Cloudflare marks with permission, include attribution: "Cloudflare, the Cloudflare logo, and Cloudflare Workers are trademarks and/or registered trademarks of Cloudflare, Inc."
+
+Source: [Cloudflare Trademark Guidelines](https://www.cloudflare.com/trademark/)
+
 ## What Makes a "Good Citizen"
 
 A Cloudflare ecosystem project is a good citizen when its README:
