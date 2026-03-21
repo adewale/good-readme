@@ -22,7 +22,7 @@ metadata:
 
 **Bad READMEs** are walls of text with no structure, auto-generated boilerplate nobody reads, or sparse one-liners that force readers to dig through source code. Equally bad: over-documented READMEs that duplicate what's in `/docs` or include every API method inline.
 
-See [anatomy.md](references/anatomy.md) for section-by-section guidance, [examples.md](references/examples.md) for patterns from well-regarded projects, and [anti-patterns.md](references/anti-patterns.md) for common mistakes.
+See [anatomy.md](references/anatomy.md) for section-by-section guidance, [examples.md](references/examples.md) for patterns from well-regarded projects, [anti-patterns.md](references/anti-patterns.md) for common mistakes, and [cloudflare.md](references/cloudflare.md) for Cloudflare ecosystem conventions.
 
 ## Modes
 
