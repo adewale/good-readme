@@ -29,7 +29,7 @@ Or, when paid features are needed:
 ```markdown
 ## Requirements
 
-Requires a Workers Paid plan ($5/month) for Durable Objects support. All other services used are free tier.
+Requires a Workers Paid plan ($5/month) for Queues support. All other services used are free tier.
 ```
 
 ### Cloudflare Primitives Declaration
@@ -42,10 +42,10 @@ Clearly state which Cloudflare services the project uses — don't make users gu
 | Service          | Purpose                        |
 |------------------|--------------------------------|
 | Workers          | API and request handling       |
-| D1               | SQLite database                |
-| R2               | Asset and file storage         |
-| KV               | Session and cache storage      |
-| Durable Objects  | Real-time coordination         |
+| D1               | Serverless SQL database        |
+| R2               | Object storage                 |
+| KV               | Key-value data storage         |
+| Durable Objects  | Stateful coordination          |
 ```
 
 ## Sources
