@@ -29,7 +29,7 @@ Or, when paid features are needed:
 ```markdown
 ## Requirements
 
-Requires a Workers Paid plan ($5/month) for <service>. All other services used are free tier.
+Requires a Workers Paid plan ($5/month) for Vectorize. All other services used are free tier.
 ```
 
 ### Cloudflare Primitives Declaration
