@@ -1,6 +1,6 @@
 # Cloudflare Ecosystem README Checklist
 
-Additional checks for projects that target the Cloudflare platform. Apply these alongside the general [quality checklist](quality-checklist.md). See the full [cloudflare-ecosystem.md](../../references/cloudflare-ecosystem.md) research for background and rationale.
+Additional checks for projects that target the Cloudflare platform. Apply these alongside the general [quality checklist](quality-checklist.md).
 
 ## Checklist
 
