@@ -53,5 +53,3 @@ Clearly state which Cloudflare services the project uses — don't make users gu
 ## Sources
 
 - [Cloudflare Deploy Buttons](https://developers.cloudflare.com/workers/platform/deploy-buttons/)
-- [awesome-cloudflare (zhuima)](https://github.com/zhuima/awesome-cloudflare)
-- [awesome-cloudflare (irazasyed)](https://github.com/irazasyed/awesome-cloudflare)
