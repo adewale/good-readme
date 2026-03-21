@@ -12,7 +12,7 @@ Include a one-click deploy button — this is the strongest community signal for
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=<REPO_URL>)
 ```
 
-The button auto-provisions KV namespaces, D1 databases, R2 buckets, and other resources by reading `wrangler.toml`. Limitation: only supports Workers apps (not Pages), only github.com and gitlab.com.
+The button auto-provisions KV namespaces, D1 databases, R2 buckets, and other resources by reading the Wrangler config (`wrangler.jsonc` or `wrangler.toml`). Limitations: Workers apps only (not Pages), public repos on github.com and gitlab.com only.
 
 ### Free-Tier Compatibility
 
