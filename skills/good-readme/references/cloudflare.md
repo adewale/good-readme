@@ -53,3 +53,4 @@ Clearly state which Cloudflare services the project uses — don't make users gu
 ## Sources
 
 - [Cloudflare Deploy Buttons](https://developers.cloudflare.com/workers/platform/deploy-buttons/)
+- [Workers Pricing](https://developers.cloudflare.com/workers/platform/pricing/)
