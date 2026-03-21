@@ -29,7 +29,7 @@ Or, when paid features are needed:
 ```markdown
 ## Requirements
 
-Requires a Workers Paid plan for <service>. All other services used are free tier.
+Requires a Workers Paid plan for Containers. All other services used are free tier.
 ```
 
 Check [Workers pricing](https://developers.cloudflare.com/workers/platform/pricing/) for current plan requirements — these change over time.
