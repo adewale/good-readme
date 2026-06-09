@@ -231,6 +231,8 @@ Do the documented APIs, CLI commands, and function signatures match the current 
 
 **How to check:** For each API call, function name, or CLI command in the README, search the codebase for a matching definition. Check that parameter names and types match. Pay special attention to recently changed files (check git log for the README vs. source files).
 
+**API drift evidence standard:** Do not accept a symbol because it appears in an old README example. Confirm it is part of the current public surface: package manifest exports, `bin` entry, `__all__`, index/barrel export, generated types, CLI parser, or documented config schema. For each mismatch, record the stale README symbol, current source-backed symbol, evidence file, and whether the old name is removed, renamed, moved, or ambiguous.
+
 ### 5.2 Current Version Numbers & Dependencies (0-4)
 
 Are version numbers, dependency names, and compatibility claims up to date?
@@ -372,8 +374,11 @@ When auditing a README, follow these steps:
 
 When auditing as an AI assistant, perform these verification steps:
 
-- [ ] Compare every import/require statement in README examples against the project's actual exports
+- [ ] Extract documented symbols from README code blocks first: imports, function/class names, CLI commands/flags, config keys, env vars, and file paths
+- [ ] Compare every import/require statement in README examples against the project's actual public exports (manifest exports, `__all__`, index files, type declarations)
 - [ ] Compare every CLI command in the README against the project's actual CLI definition (bin field, argument parser)
+- [ ] For renamed or missing APIs, name both the stale README symbol and the source-backed current symbol; cite the source file that proves the correction
+- [ ] Do not invent aliases, compatibility wrappers, or implementation details for README examples when source does not prove them
 - [ ] Check that the package name in install commands matches the actual published package name
 - [ ] Verify that configuration keys/options in examples exist in the project's config schema or types
 - [ ] Check that file paths referenced in the README (e.g., `src/config.js`) actually exist

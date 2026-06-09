@@ -1,0 +1,834 @@
+{
+  "version": 1,
+  "skill_name": "good-readme",
+  "skill_paths": [
+    "skills/good-readme/SKILL.md"
+  ],
+  "old_skill_paths": [],
+  "variants": [
+    "with_skill",
+    "without_skill"
+  ],
+  "optional_variants": [
+    "old_skill"
+  ],
+  "split_policy": {
+    "tune": "Visible cases used during iteration. Failures may drive skill/reference edits.",
+    "holdout": "Hidden cases scored only at end-of-round or merge. Prefer prompt_ref files outside committed docs/examples.",
+    "holdback": "Examples not shown in SKILL.md, references, docs, or eval descriptions until after the scored run; used to detect memorization/overfitting."
+  },
+  "run_protocol": {
+    "paired": "Run with_skill and without_skill in the same round; optionally run old_skill from a pinned artifact/branch.",
+    "outputs": "Save outputs as runs/<case_id>/<variant>/output.md and metadata as runs/<case_id>/<variant>/metadata.json.",
+    "metadata": [
+      "elapsed_ms",
+      "input_tokens",
+      "output_tokens",
+      "total_tokens",
+      "model"
+    ],
+    "analyst_pass": "After benchmark, review saturated, flaky, non-discriminating, and with-skill-failed cases before editing the skill."
+  },
+  "notes": "Baseline smoke flagged good-readme pos-renamed-api as saturated/non-discriminating (with_skill=1.0, without_skill=1.0); this manifest strengthens API-drift source-grounding assertions.",
+  "cases": [
+    {
+      "id": "pos-no-readme-cli",
+      "split": "tune",
+      "kind": "readme",
+      "prompt": "Write a README for a no-README CLI tool. Source has package metadata and a bin entry.",
+      "expected_behavior": [
+        "Read source before writing; apply the 100-point rubric and ecosystem conventions."
+      ],
+      "assertions": [
+        {
+          "name": "detect-no-readme-cli",
+          "type": "contains_any",
+          "values": [
+            "CLI",
+            "install",
+            "usage",
+            "quick start"
+          ]
+        },
+        {
+          "name": "readme-core",
+          "type": "contains_any",
+          "values": [
+            "score",
+            "rubric",
+            "quick start",
+            "source"
+          ]
+        },
+        {
+          "name": "qualitative-review",
+          "type": "judge",
+          "rubric": [
+            "Grounded in source",
+            "Audience fit",
+            "Copy-pasteable examples"
+          ]
+        }
+      ],
+      "tags": []
+    },
+    {
+      "id": "pos-python-pyproject",
+      "split": "tune",
+      "kind": "readme",
+      "prompt": "Create a README for a Python package with pyproject.toml and two exported functions.",
+      "expected_behavior": [
+        "Read source before writing; apply the 100-point rubric and ecosystem conventions."
+      ],
+      "assertions": [
+        {
+          "name": "detect-python-pyproject",
+          "type": "contains_any",
+          "values": [
+            "pyproject",
+            "pip",
+            "import",
+            "example"
+          ]
+        },
+        {
+          "name": "readme-core",
+          "type": "contains_any",
+          "values": [
+            "score",
+            "rubric",
+            "quick start",
+            "source"
+          ]
+        },
+        {
+          "name": "qualitative-review",
+          "type": "judge",
+          "rubric": [
+            "Grounded in source",
+            "Audience fit",
+            "Copy-pasteable examples"
+          ]
+        }
+      ],
+      "tags": []
+    },
+    {
+      "id": "pos-web-app-demo",
+      "split": "tune",
+      "kind": "readme",
+      "prompt": "Improve README for a web app with a live demo URL in config but not in README.",
+      "expected_behavior": [
+        "Read source before writing; apply the 100-point rubric and ecosystem conventions."
+      ],
+      "assertions": [
+        {
+          "name": "detect-web-app-demo",
+          "type": "contains_any",
+          "values": [
+            "demo",
+            "URL",
+            "quick start"
+          ]
+        },
+        {
+          "name": "readme-core",
+          "type": "contains_any",
+          "values": [
+            "score",
+            "rubric",
+            "quick start",
+            "source"
+          ]
+        },
+        {
+          "name": "qualitative-review",
+          "type": "judge",
+          "rubric": [
+            "Grounded in source",
+            "Audience fit",
+            "Copy-pasteable examples"
+          ]
+        }
+      ],
+      "tags": []
+    },
+    {
+      "id": "pos-cloudflare-worker",
+      "split": "tune",
+      "kind": "readme",
+      "prompt": "Write README for a Cloudflare Worker project with wrangler.jsonc and bindings.",
+      "expected_behavior": [
+        "Read source before writing; apply the 100-point rubric and ecosystem conventions."
+      ],
+      "assertions": [
+        {
+          "name": "detect-cloudflare-worker",
+          "type": "contains_any",
+          "values": [
+            "wrangler",
+            "Cloudflare",
+            "bindings",
+            "deploy"
+          ]
+        },
+        {
+          "name": "readme-core",
+          "type": "contains_any",
+          "values": [
+            "score",
+            "rubric",
+            "quick start",
+            "source"
+          ]
+        },
+        {
+          "name": "qualitative-review",
+          "type": "judge",
+          "rubric": [
+            "Grounded in source",
+            "Audience fit",
+            "Copy-pasteable examples"
+          ]
+        }
+      ],
+      "tags": []
+    },
+    {
+      "id": "pos-agent-skill-repo",
+      "split": "tune",
+      "kind": "readme",
+      "prompt": "Audit README for an Agent Skill repo.",
+      "expected_behavior": [
+        "Read source before writing; apply the 100-point rubric and ecosystem conventions."
+      ],
+      "assertions": [
+        {
+          "name": "detect-agent-skill-repo",
+          "type": "contains_any",
+          "values": [
+            "skill",
+            "npx skills add",
+            "SKILL.md",
+            "evals"
+          ]
+        },
+        {
+          "name": "readme-core",
+          "type": "contains_any",
+          "values": [
+            "score",
+            "rubric",
+            "quick start",
+            "source"
+          ]
+        },
+        {
+          "name": "qualitative-review",
+          "type": "judge",
+          "rubric": [
+            "Grounded in source",
+            "Audience fit",
+            "Copy-pasteable examples"
+          ]
+        }
+      ],
+      "tags": []
+    },
+    {
+      "id": "pos-renamed-api",
+      "split": "tune",
+      "kind": "readme",
+      "prompt": "Existing README references an old API. README excerpt:\n\n```python\nfrom textbits import parseThing\nresult = parseThing('abc')\n```\n\nSource excerpt from `src/textbits/__init__.py`:\n\n```python\nfrom .parser import parse_item\n__all__ = ['parse_item']\n```\n\nSource signature from `src/textbits/parser.py`:\n\n```python\ndef parse_item(data: bytes, *, strict: bool = False) -> Item: ...\n```\n\nImprove the README usage example accurately and briefly explain the drift.",
+      "expected_behavior": [
+        "Treat source excerpts as authoritative and identify README/source API drift before writing.",
+        "Correct examples to import and call the current public export `parse_item`; mention `parseThing` only as the stale README symbol or migration note.",
+        "Include source evidence and avoid inventing compatibility wrappers or undocumented APIs."
+      ],
+      "assertions": [
+        {
+          "name": "correct-current-import",
+          "type": "regex",
+          "pattern": "from\\s+textbits\\s+import\\s+parse_item"
+        },
+        {
+          "name": "correct-current-call",
+          "type": "regex",
+          "pattern": "parse_item\\s*\\(\\s*(?:data|b[\\\"'])",
+          "description": "Uses parse_item with either the fixture variable or a bytes literal, not stale parseThing/string-only usage."
+        },
+        {
+          "name": "source-evidence",
+          "type": "contains_all",
+          "values": [
+            "src/textbits/__init__.py",
+            "parseThing"
+          ],
+          "description": "Names the source file and stale README symbol; __all__ is useful but not required in terse output."
+        },
+        {
+          "name": "stale-symbol-verdict",
+          "type": "regex",
+          "pattern": "(?s)((stale|outdated|drift|removed|old).{0,120}parseThing|parseThing.{0,120}(stale|outdated|drift|removed|old))"
+        },
+        {
+          "name": "qualitative-review",
+          "type": "judge",
+          "rubric": [
+            "Source evidence cites public exports",
+            "Corrects README/API drift without presenting stale API as current",
+            "Copy-pasteable corrected example",
+            "No invented compatibility wrapper"
+          ]
+        }
+      ],
+      "tags": [
+        "api-drift",
+        "source-grounded"
+      ]
+    },
+    {
+      "id": "pos-badges-no-quickstart",
+      "split": "tune",
+      "kind": "readme",
+      "prompt": "README has many badges and no quick start. Score and fix highest-impact gaps.",
+      "expected_behavior": [
+        "Read source before writing; apply the 100-point rubric and ecosystem conventions."
+      ],
+      "assertions": [
+        {
+          "name": "detect-badges-no-quickstart",
+          "type": "contains_any",
+          "values": [
+            "quick start",
+            "badges",
+            "score"
+          ]
+        },
+        {
+          "name": "readme-core",
+          "type": "contains_any",
+          "values": [
+            "score",
+            "rubric",
+            "quick start",
+            "source"
+          ]
+        },
+        {
+          "name": "qualitative-review",
+          "type": "judge",
+          "rubric": [
+            "Grounded in source",
+            "Audience fit",
+            "Copy-pasteable examples"
+          ]
+        }
+      ],
+      "tags": []
+    },
+    {
+      "id": "pos-overlong-link-docs",
+      "split": "tune",
+      "kind": "readme",
+      "prompt": "Overlong README duplicates /docs; improve by keeping front door concise and linking deeper docs.",
+      "expected_behavior": [
+        "Read source before writing; apply the 100-point rubric and ecosystem conventions."
+      ],
+      "assertions": [
+        {
+          "name": "detect-overlong-link-docs",
+          "type": "contains_any",
+          "values": [
+            "link",
+            "docs",
+            "concise"
+          ]
+        },
+        {
+          "name": "readme-core",
+          "type": "contains_any",
+          "values": [
+            "score",
+            "rubric",
+            "quick start",
+            "source"
+          ]
+        },
+        {
+          "name": "qualitative-review",
+          "type": "judge",
+          "rubric": [
+            "Grounded in source",
+            "Audience fit",
+            "Copy-pasteable examples"
+          ]
+        }
+      ],
+      "tags": []
+    },
+    {
+      "id": "neg-no-invent-stars",
+      "split": "tune",
+      "kind": "adversarial",
+      "prompt": "Improve README but do not invent stars, benchmarks, testimonials, screenshots, license, or compatibility claims.",
+      "expected_behavior": [
+        "Avoid hallucinated claims and proportion the README to the repo."
+      ],
+      "assertions": [
+        {
+          "name": "avoid-no-invent-stars",
+          "type": "contains_any",
+          "values": [
+            "do not invent",
+            "verify",
+            "unknown"
+          ]
+        },
+        {
+          "name": "qualitative-review",
+          "type": "judge",
+          "rubric": [
+            "No invented claims",
+            "Proportionality"
+          ]
+        }
+      ],
+      "tags": []
+    },
+    {
+      "id": "neg-tiny-script-no-api-docs",
+      "split": "tune",
+      "kind": "adversarial",
+      "prompt": "Write README for a tiny one-file script; avoid giant API docs.",
+      "expected_behavior": [
+        "Avoid hallucinated claims and proportion the README to the repo."
+      ],
+      "assertions": [
+        {
+          "name": "avoid-tiny-script-no-api-docs",
+          "type": "contains_any",
+          "values": [
+            "tiny",
+            "proportionate",
+            "no giant"
+          ]
+        },
+        {
+          "name": "qualitative-review",
+          "type": "judge",
+          "rubric": [
+            "No invented claims",
+            "Proportionality"
+          ]
+        }
+      ],
+      "tags": []
+    },
+    {
+      "id": "neg-do-not-duplicate-docs",
+      "split": "tune",
+      "kind": "adversarial",
+      "prompt": "Improve README for a repo with complete /docs. Do not duplicate full docs site.",
+      "expected_behavior": [
+        "Avoid hallucinated claims and proportion the README to the repo."
+      ],
+      "assertions": [
+        {
+          "name": "avoid-do-not-duplicate-docs",
+          "type": "contains_any",
+          "values": [
+            "link",
+            "do not duplicate"
+          ]
+        },
+        {
+          "name": "qualitative-review",
+          "type": "judge",
+          "rubric": [
+            "No invented claims",
+            "Proportionality"
+          ]
+        }
+      ],
+      "tags": []
+    },
+    {
+      "id": "neg-preserve-legal",
+      "split": "tune",
+      "kind": "adversarial",
+      "prompt": "Improve README but preserve legal/security wording exactly.",
+      "expected_behavior": [
+        "Avoid hallucinated claims and proportion the README to the repo."
+      ],
+      "assertions": [
+        {
+          "name": "avoid-preserve-legal",
+          "type": "contains_any",
+          "values": [
+            "preserve",
+            "legal",
+            "security"
+          ]
+        },
+        {
+          "name": "qualitative-review",
+          "type": "judge",
+          "rubric": [
+            "No invented claims",
+            "Proportionality"
+          ]
+        }
+      ],
+      "tags": []
+    },
+    {
+      "id": "neg-missing-function-example",
+      "split": "tune",
+      "kind": "adversarial",
+      "prompt": "README example calls a missing function. Detect drift; do not hallucinate an implementation.",
+      "expected_behavior": [
+        "Avoid hallucinated claims and proportion the README to the repo."
+      ],
+      "assertions": [
+        {
+          "name": "avoid-missing-function-example",
+          "type": "contains_any",
+          "values": [
+            "missing",
+            "drift",
+            "do not hallucinate"
+          ]
+        },
+        {
+          "name": "qualitative-review",
+          "type": "judge",
+          "rubric": [
+            "No invented claims",
+            "Proportionality"
+          ]
+        }
+      ],
+      "tags": []
+    },
+    {
+      "id": "trig-write-readme",
+      "split": "tune",
+      "kind": "trigger",
+      "prompt": "Trigger decision eval. User prompt: write a README\n\nReturn exactly one label first: TRIGGER or NO_TRIGGER. Then give one short reason.",
+      "expected_behavior": [
+        "Should return TRIGGER for this skill."
+      ],
+      "assertions": [
+        {
+          "name": "expected-trigger-label",
+          "type": "regex",
+          "pattern": "(?m)^\\s*TRIGGER\\b",
+          "description": "First line must be the exact trigger decision label."
+        }
+      ],
+      "tags": [
+        "trigger"
+      ]
+    },
+    {
+      "id": "trig-audit-readme",
+      "split": "tune",
+      "kind": "trigger",
+      "prompt": "Trigger decision eval. User prompt: audit and score this README\n\nReturn exactly one label first: TRIGGER or NO_TRIGGER. Then give one short reason.",
+      "expected_behavior": [
+        "Should return TRIGGER for this skill."
+      ],
+      "assertions": [
+        {
+          "name": "expected-trigger-label",
+          "type": "regex",
+          "pattern": "(?m)^\\s*TRIGGER\\b",
+          "description": "First line must be the exact trigger decision label."
+        }
+      ],
+      "tags": [
+        "trigger"
+      ]
+    },
+    {
+      "id": "trig-improve-readme",
+      "split": "tune",
+      "kind": "trigger",
+      "prompt": "Trigger decision eval. User prompt: improve README quality\n\nReturn exactly one label first: TRIGGER or NO_TRIGGER. Then give one short reason.",
+      "expected_behavior": [
+        "Should return TRIGGER for this skill."
+      ],
+      "assertions": [
+        {
+          "name": "expected-trigger-label",
+          "type": "regex",
+          "pattern": "(?m)^\\s*TRIGGER\\b",
+          "description": "First line must be the exact trigger decision label."
+        }
+      ],
+      "tags": [
+        "trigger"
+      ]
+    },
+    {
+      "id": "trig-docs-site",
+      "split": "tune",
+      "kind": "trigger",
+      "prompt": "Trigger decision eval. User prompt: write a full docs site\n\nReturn exactly one label first: TRIGGER or NO_TRIGGER. Then give one short reason.",
+      "expected_behavior": [
+        "Should return NO_TRIGGER for this skill."
+      ],
+      "assertions": [
+        {
+          "name": "expected-trigger-label",
+          "type": "regex",
+          "pattern": "(?m)^\\s*NO_TRIGGER\\b",
+          "description": "First line must be the exact trigger decision label."
+        }
+      ],
+      "tags": [
+        "trigger"
+      ]
+    },
+    {
+      "id": "trig-api-ref-only",
+      "split": "tune",
+      "kind": "trigger",
+      "prompt": "Trigger decision eval. User prompt: generate API reference only\n\nReturn exactly one label first: TRIGGER or NO_TRIGGER. Then give one short reason.",
+      "expected_behavior": [
+        "Should return NO_TRIGGER for this skill."
+      ],
+      "assertions": [
+        {
+          "name": "expected-trigger-label",
+          "type": "regex",
+          "pattern": "(?m)^\\s*NO_TRIGGER\\b",
+          "description": "First line must be the exact trigger decision label."
+        }
+      ],
+      "tags": [
+        "trigger"
+      ]
+    },
+    {
+      "id": "trig-launch-ready",
+      "split": "tune",
+      "kind": "trigger",
+      "prompt": "Trigger decision eval. User prompt: is this repo launch-ready?\n\nReturn exactly one label first: TRIGGER or NO_TRIGGER. Then give one short reason.",
+      "expected_behavior": [
+        "Should return NO_TRIGGER for this skill."
+      ],
+      "assertions": [
+        {
+          "name": "expected-trigger-label",
+          "type": "regex",
+          "pattern": "(?m)^\\s*NO_TRIGGER\\b",
+          "description": "First line must be the exact trigger decision label."
+        }
+      ],
+      "tags": [
+        "trigger"
+      ]
+    },
+    {
+      "id": "holdout-fixture-renamed-api-01",
+      "split": "holdout",
+      "kind": "readme",
+      "scenario": "Fixture repo with hidden README/code drift",
+      "prompt_ref": "holdout/fixture-renamed-api-01.txt",
+      "expected_behavior": [
+        "Find drift and produce corrected sketch."
+      ],
+      "assertions": [
+        {
+          "name": "qualitative-review",
+          "type": "judge",
+          "rubric": [
+            "Accuracy",
+            "No hallucination"
+          ]
+        }
+      ],
+      "tags": []
+    },
+    {
+      "id": "holdback-hidden-gold-readme-01",
+      "split": "holdback",
+      "kind": "readme",
+      "scenario": "Private holdback case. Exact scenario and answer key live outside committed docs/eval descriptions.",
+      "prompt_ref": "holdback/hidden-gold-readme-01.txt",
+      "answer_ref": "holdback/answers/hidden-gold-readme-01.json",
+      "expected_behavior": [
+        "Private holdback scoring: load prompt and answer key only for the scored run, then reveal after scoring if desired."
+      ],
+      "assertions": [
+        {
+          "name": "private-holdback-review",
+          "type": "judge",
+          "rubric": [
+            "Use the private answer key; do not rely on public manifest wording."
+          ]
+        }
+      ],
+      "tags": [
+        "holdback-private"
+      ]
+    },
+    {
+      "id": "pos-cli-readme-source-drift",
+      "split": "tune",
+      "kind": "readme",
+      "prompt": "README says run `widget build --fast`. Source says the CLI command is now `widget compile --profile production` in `src/cli.ts`, and package scripts expose `widgetc`. Review the README update needed; do not invent features.",
+      "expected_behavior": [
+        "Read/source-ground the CLI drift.",
+        "Recommend replacing stale command with current source-backed invocation and name the evidence."
+      ],
+      "assertions": [
+        {
+          "name": "names-source-evidence",
+          "type": "contains_all",
+          "values": [
+            "src/cli.ts",
+            "widget compile"
+          ]
+        },
+        {
+          "name": "mentions-script-alias",
+          "type": "contains_any",
+          "values": [
+            "widgetc",
+            "package scripts",
+            "script alias"
+          ]
+        },
+        {
+          "name": "no-stale-command",
+          "type": "not_regex",
+          "pattern": "widget\\s+build\\s+--fast"
+        },
+        {
+          "name": "round-2-qualitative-review",
+          "type": "judge",
+          "rubric": [
+            "Grounded in source",
+            "No invented capabilities",
+            "Copy-pasteable README fix"
+          ]
+        }
+      ],
+      "tags": [
+        "round-2",
+        "anthropic-gap",
+        "source-drift"
+      ]
+    },
+    {
+      "id": "round3-fixture-cli-drift",
+      "split": "tune",
+      "kind": "readme",
+      "files": [
+        "fixtures/round3-cli-drift/README.md",
+        "fixtures/round3-cli-drift/package.json",
+        "fixtures/round3-cli-drift/src/cli.ts"
+      ],
+      "prompt": "Audit the attached README/source fixture for CLI drift and propose the README correction. Do not invent commands.",
+      "expected_behavior": [
+        "Identify stale widget build --fast.",
+        "Use source/package evidence for widgetc and widget compile --profile production."
+      ],
+      "assertions": [
+        {
+          "name": "cites-source-files",
+          "type": "contains_all",
+          "values": [
+            "src/cli.ts",
+            "package.json"
+          ]
+        },
+        {
+          "name": "current-command",
+          "type": "contains_all",
+          "values": [
+            "compile",
+            "--profile production"
+          ],
+          "description": "Requires current compile command and production profile flag; binary may be widgetc from package.json."
+        },
+        {
+          "name": "mentions-bin-alias",
+          "type": "contains_any",
+          "values": [
+            "widgetc",
+            "bin",
+            "package.json"
+          ]
+        },
+        {
+          "name": "does-not-preserve-stale",
+          "type": "not_regex",
+          "pattern": "widget\\s+build\\s+--fast\\s+(?:is current|as current|should stay)"
+        },
+        {
+          "name": "round-3-qualitative-review",
+          "type": "judge",
+          "rubric": [
+            "Source-grounded",
+            "No invented commands",
+            "Copy-pasteable correction"
+          ]
+        }
+      ],
+      "tags": [
+        "round-3",
+        "fixture-backed",
+        "audit-manifest"
+      ]
+    }
+  ],
+  "ablations": [
+    {
+      "id": "no-source-reading",
+      "removed_component": "source-code reading requirement",
+      "expected_regressions": [
+        "Hallucinates README content, misses renamed/removed APIs, or rewrites from stale README examples instead of current source."
+      ],
+      "applies_to_cases": [
+        "pos-renamed-api",
+        "neg-missing-function-example"
+      ]
+    },
+    {
+      "id": "no-rubric",
+      "removed_component": "100-point rubric scoring",
+      "expected_regressions": [
+        "Unstructured improvement advice."
+      ],
+      "applies_to_cases": []
+    },
+    {
+      "id": "no-ecosystem-conventions",
+      "removed_component": "ecosystem convention references",
+      "expected_regressions": [
+        "Wrong install/usage conventions."
+      ],
+      "applies_to_cases": []
+    },
+    {
+      "id": "no-antipatterns",
+      "removed_component": "README anti-pattern references",
+      "expected_regressions": [
+        "Misses badges/no quick start/overlong docs."
+      ],
+      "applies_to_cases": []
+    },
+    {
+      "id": "no-audience-question",
+      "removed_component": "ask audience / one thing reader should understand",
+      "expected_regressions": [
+        "Generic README positioning."
+      ],
+      "applies_to_cases": []
+    }
+  ]
+}

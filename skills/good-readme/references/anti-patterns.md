@@ -30,7 +30,7 @@ A catalog of common README mistakes, why they hurt, and how to fix them.
 
 **Why it's bad:** This is the most damaging anti-pattern. Users try the documented approach, it fails, and they waste time debugging something that was never going to work. Trust in the project evaporates. Issue trackers fill with "docs say X but Y happens" reports.
 
-**Fix:** Treat README accuracy as a release-blocking concern. When you change an API or remove a feature, update the README in the same pull request. Add a CI check or review checklist item: "Does this change require a README update?" Pin examples to specific versions when possible.
+**Fix:** Treat README accuracy as a release-blocking concern. When you change an API or remove a feature, update the README in the same pull request. Add a CI check or review checklist item: "Does this change require a README update?" Pin examples to specific versions when possible. When auditing an existing README, run a source-grounded drift pass: extract every documented symbol, verify it against public exports/entrypoints/schemas, cite the source file that proves the current API, and correct examples without inventing aliases or compatibility wrappers.
 
 ---
 
