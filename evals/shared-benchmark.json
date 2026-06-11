@@ -75,7 +75,13 @@
           ]
         }
       ],
-      "tags": []
+      "tags": [],
+      "domain": "readme-quality",
+      "difficulty": "core",
+      "success_goals": [
+        "outcome",
+        "style"
+      ]
     },
     {
       "id": "pos-python-pyproject",
@@ -116,7 +122,13 @@
           ]
         }
       ],
-      "tags": []
+      "tags": [],
+      "domain": "readme-quality",
+      "difficulty": "core",
+      "success_goals": [
+        "outcome",
+        "style"
+      ]
     },
     {
       "id": "pos-web-app-demo",
@@ -156,7 +168,13 @@
           ]
         }
       ],
-      "tags": []
+      "tags": [],
+      "domain": "readme-quality",
+      "difficulty": "core",
+      "success_goals": [
+        "outcome",
+        "style"
+      ]
     },
     {
       "id": "pos-cloudflare-worker",
@@ -197,7 +215,13 @@
           ]
         }
       ],
-      "tags": []
+      "tags": [],
+      "domain": "readme-quality",
+      "difficulty": "core",
+      "success_goals": [
+        "outcome",
+        "style"
+      ]
     },
     {
       "id": "pos-agent-skill-repo",
@@ -238,7 +262,13 @@
           ]
         }
       ],
-      "tags": []
+      "tags": [],
+      "domain": "readme-quality",
+      "difficulty": "core",
+      "success_goals": [
+        "outcome",
+        "style"
+      ]
     },
     {
       "id": "pos-renamed-api",
@@ -290,6 +320,12 @@
       "tags": [
         "api-drift",
         "source-grounded"
+      ],
+      "domain": "readme-quality",
+      "difficulty": "core",
+      "success_goals": [
+        "outcome",
+        "style"
       ]
     },
     {
@@ -330,7 +366,13 @@
           ]
         }
       ],
-      "tags": []
+      "tags": [],
+      "domain": "readme-quality",
+      "difficulty": "core",
+      "success_goals": [
+        "outcome",
+        "style"
+      ]
     },
     {
       "id": "pos-overlong-link-docs",
@@ -370,7 +412,13 @@
           ]
         }
       ],
-      "tags": []
+      "tags": [],
+      "domain": "readme-quality",
+      "difficulty": "core",
+      "success_goals": [
+        "outcome",
+        "style"
+      ]
     },
     {
       "id": "neg-no-invent-stars",
@@ -399,7 +447,13 @@
           ]
         }
       ],
-      "tags": []
+      "tags": [],
+      "domain": "readme-quality",
+      "difficulty": "extended",
+      "success_goals": [
+        "outcome",
+        "style"
+      ]
     },
     {
       "id": "neg-tiny-script-no-api-docs",
@@ -428,7 +482,13 @@
           ]
         }
       ],
-      "tags": []
+      "tags": [],
+      "domain": "readme-quality",
+      "difficulty": "extended",
+      "success_goals": [
+        "outcome",
+        "style"
+      ]
     },
     {
       "id": "neg-do-not-duplicate-docs",
@@ -456,7 +516,13 @@
           ]
         }
       ],
-      "tags": []
+      "tags": [],
+      "domain": "readme-quality",
+      "difficulty": "extended",
+      "success_goals": [
+        "outcome",
+        "style"
+      ]
     },
     {
       "id": "neg-preserve-legal",
@@ -485,7 +551,13 @@
           ]
         }
       ],
-      "tags": []
+      "tags": [],
+      "domain": "readme-quality",
+      "difficulty": "extended",
+      "success_goals": [
+        "outcome",
+        "style"
+      ]
     },
     {
       "id": "neg-missing-function-example",
@@ -514,7 +586,13 @@
           ]
         }
       ],
-      "tags": []
+      "tags": [],
+      "domain": "readme-quality",
+      "difficulty": "extended",
+      "success_goals": [
+        "outcome",
+        "style"
+      ]
     },
     {
       "id": "trig-write-readme",
@@ -534,7 +612,13 @@
       ],
       "tags": [
         "trigger"
-      ]
+      ],
+      "domain": "readme-quality",
+      "difficulty": "core",
+      "success_goals": [
+        "trigger"
+      ],
+      "trigger_type": "implicit"
     },
     {
       "id": "trig-audit-readme",
@@ -554,7 +638,13 @@
       ],
       "tags": [
         "trigger"
-      ]
+      ],
+      "domain": "readme-quality",
+      "difficulty": "core",
+      "success_goals": [
+        "trigger"
+      ],
+      "trigger_type": "implicit"
     },
     {
       "id": "trig-improve-readme",
@@ -574,7 +664,13 @@
       ],
       "tags": [
         "trigger"
-      ]
+      ],
+      "domain": "readme-quality",
+      "difficulty": "core",
+      "success_goals": [
+        "trigger"
+      ],
+      "trigger_type": "implicit"
     },
     {
       "id": "trig-docs-site",
@@ -594,7 +690,13 @@
       ],
       "tags": [
         "trigger"
-      ]
+      ],
+      "domain": "readme-quality",
+      "difficulty": "core",
+      "success_goals": [
+        "trigger"
+      ],
+      "trigger_type": "negative-near-miss"
     },
     {
       "id": "trig-api-ref-only",
@@ -614,7 +716,13 @@
       ],
       "tags": [
         "trigger"
-      ]
+      ],
+      "domain": "readme-quality",
+      "difficulty": "core",
+      "success_goals": [
+        "trigger"
+      ],
+      "trigger_type": "negative-near-miss"
     },
     {
       "id": "trig-launch-ready",
@@ -634,7 +742,13 @@
       ],
       "tags": [
         "trigger"
-      ]
+      ],
+      "domain": "readme-quality",
+      "difficulty": "core",
+      "success_goals": [
+        "trigger"
+      ],
+      "trigger_type": "negative-near-miss"
     },
     {
       "id": "holdout-fixture-renamed-api-01",
@@ -655,7 +769,13 @@
           ]
         }
       ],
-      "tags": []
+      "tags": [],
+      "domain": "readme-quality",
+      "difficulty": "extended",
+      "success_goals": [
+        "outcome",
+        "style"
+      ]
     },
     {
       "id": "holdback-hidden-gold-readme-01",
@@ -678,6 +798,12 @@
       ],
       "tags": [
         "holdback-private"
+      ],
+      "domain": "readme-quality",
+      "difficulty": "extended",
+      "success_goals": [
+        "outcome",
+        "style"
       ]
     },
     {
@@ -726,6 +852,12 @@
         "round-2",
         "anthropic-gap",
         "source-drift"
+      ],
+      "domain": "readme-quality",
+      "difficulty": "core",
+      "success_goals": [
+        "outcome",
+        "style"
       ]
     },
     {
@@ -801,6 +933,12 @@
         "round-3",
         "fixture-backed",
         "audit-manifest"
+      ],
+      "domain": "readme-quality",
+      "difficulty": "extended",
+      "success_goals": [
+        "outcome",
+        "style"
       ]
     }
   ],
