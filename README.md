@@ -2,7 +2,7 @@
 
 [![skills.sh](https://skills.sh/b/adewale/good-readme)](https://skills.sh/adewale/good-readme)
 
-A Claude Code skill for writing and improving GitHub README documents.
+An Agent Skill for writing and improving GitHub README documents.
 
 Give it a project with no README and it writes one from scratch — grounded in real analysis of the source code, not boilerplate templates. Give it a project with an existing README and it audits quality against a 100-point rubric, catches inaccuracies, and makes targeted improvements.
 
@@ -12,13 +12,23 @@ Give it a project with no README and it writes one from scratch — grounded in 
 npx skills add adewale/good-readme
 ```
 
-> Requires [Claude Code](https://docs.anthropic.com/en/docs/claude-code). For Claude Code's direct URL flow, use `claude skill add --url https://github.com/adewale/good-readme`.
-
 Skills appear on skills.sh automatically after users install the repo with the skills CLI. Install counts and leaderboard rankings come from anonymous CLI telemetry; opt out with `DISABLE_TELEMETRY=1`. The repo page customization in `skills.sh.json` is picked up after the repository is seen by telemetry and the cache refreshes.
+
+## Agent compatibility
+
+The installable skill directory is `skills/good-readme`. It uses the Agent Skills `SKILL.md` format and is configured for Codex, OpenCode, Pi, Gemini CLI, and Claude Code.
+
+| Agent/client | Install or use |
+|---|---|
+| Codex | `cp -R skills/good-readme ~/.codex/skills/good-readme` |
+| OpenCode | `cp -R skills/good-readme ~/.config/opencode/skills/good-readme` or use `.opencode/skills/good-readme` in a project |
+| Pi | `pi install https://github.com/adewale/good-readme` or `pi --skill skills/good-readme` |
+| Gemini CLI | `gemini skills install https://github.com/adewale/good-readme --path skills/good-readme` or copy to `.gemini/skills/good-readme` |
+| Claude Code | `npx skills add adewale/good-readme` or copy to `.claude/skills/good-readme` |
 
 ## Usage
 
-Open Claude Code in any project directory and ask:
+Open your coding agent in any project directory and ask:
 
 ```
 Write a README for this project
