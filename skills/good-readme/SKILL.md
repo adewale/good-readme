@@ -2,6 +2,7 @@
 name: good-readme
 description: Create, improve, or audit README.md documents for GitHub projects. Use only when the user explicitly asks for a README, README quality/readability, README accuracy, or README examples. Do not use for full docs sites, API-reference-only work, general repo launch/readiness audits, topics/homepage metadata, or broad repository review.
 license: MIT
+compatibility: Agent Skills clients including Codex, OpenCode, Pi, Gemini CLI, and Claude Code.
 references:
   - references/anatomy.md
   - references/examples.md
@@ -9,7 +10,7 @@ references:
   - references/anti-patterns.md
 metadata:
   author: adewale
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 # good-readme

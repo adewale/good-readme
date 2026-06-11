@@ -1,0 +1,35 @@
+{
+  "name": "good-readme",
+  "version": "0.1.1",
+  "private": true,
+  "license": "MIT",
+  "description": "Agent Skill for creating, auditing, and improving GitHub README documents.",
+  "keywords": [
+    "agent-skills",
+    "codex",
+    "opencode",
+    "pi",
+    "gemini",
+    "claude-code"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adewale/good-readme.git"
+  },
+  "homepage": "https://github.com/adewale/good-readme#readme",
+  "skill": {
+    "entry": "skills/good-readme/SKILL.md",
+    "harnesses": [
+      "codex",
+      "opencode",
+      "pi",
+      "gemini",
+      "claude-code"
+    ]
+  },
+  "pi": {
+    "skills": [
+      "./skills"
+    ]
+  }
+}

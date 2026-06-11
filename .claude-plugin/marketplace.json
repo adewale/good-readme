@@ -1,11 +1,13 @@
 {
   "name": "good-readme",
-  "description": "A Claude Code skill for writing and improving GitHub README documents.",
+  "description": "Create, audit, and improve GitHub README documents as an Agent Skill.",
   "plugins": [
     {
       "name": "good-readme",
       "source": "./",
-      "skills": ["./skills/good-readme"]
+      "skills": [
+        "./skills/good-readme"
+      ]
     }
   ]
 }
