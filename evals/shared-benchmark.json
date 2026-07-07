@@ -49,11 +49,11 @@
           "name": "detect-no-readme-cli",
           "type": "contains_any",
           "values": [
-            "CLI",
             "install",
             "usage",
             "quick start"
-          ]
+          ],
+          "description": "Removed short prompt-echo token."
         },
         {
           "name": "readme-core",
@@ -61,9 +61,9 @@
           "values": [
             "score",
             "rubric",
-            "quick start",
-            "source"
-          ]
+            "quick start"
+          ],
+          "description": "Prompt-echoed values removed by leakage cleanup."
         },
         {
           "name": "qualitative-review",
@@ -96,11 +96,11 @@
           "name": "detect-python-pyproject",
           "type": "contains_any",
           "values": [
-            "pyproject",
             "pip",
             "import",
             "example"
-          ]
+          ],
+          "description": "Prompt-echoed values removed by leakage cleanup."
         },
         {
           "name": "readme-core",
@@ -141,12 +141,9 @@
       "assertions": [
         {
           "name": "detect-web-app-demo",
-          "type": "contains_any",
-          "values": [
-            "demo",
-            "URL",
-            "quick start"
-          ]
+          "type": "regex",
+          "pattern": "(?is)(live demo.{0,120}(README|front door|link)|try it online|configuration evidence|config.{0,120}(demo|URL)|first screen.{0,120}demo)",
+          "description": "Requires surfacing the configured live demo as front-door evidence, not just saying URL."
         },
         {
           "name": "readme-core",
@@ -189,11 +186,9 @@
           "name": "detect-cloudflare-worker",
           "type": "contains_any",
           "values": [
-            "wrangler",
-            "Cloudflare",
-            "bindings",
             "deploy"
-          ]
+          ],
+          "description": "Prompt-echoed values removed by leakage cleanup."
         },
         {
           "name": "readme-core",
@@ -236,11 +231,11 @@
           "name": "detect-agent-skill-repo",
           "type": "contains_any",
           "values": [
-            "skill",
             "npx skills add",
             "SKILL.md",
             "evals"
-          ]
+          ],
+          "description": "Prompt-echoed values removed by leakage cleanup."
         },
         {
           "name": "readme-core",
@@ -294,12 +289,9 @@
         },
         {
           "name": "source-evidence",
-          "type": "contains_all",
-          "values": [
-            "src/textbits/__init__.py",
-            "parseThing"
-          ],
-          "description": "Names the source file and stale README symbol; __all__ is useful but not required in terse output."
+          "type": "regex",
+          "pattern": "(?is)(src/textbits/__init__\\.py.{0,160}parseThing|parseThing.{0,160}src/textbits/__init__\\.py)",
+          "description": "Cites both the current source file and stale README symbol as drift evidence."
         },
         {
           "name": "stale-symbol-verdict",
@@ -339,22 +331,18 @@
       "assertions": [
         {
           "name": "detect-badges-no-quickstart",
-          "type": "contains_any",
-          "values": [
-            "quick start",
-            "badges",
-            "score"
-          ]
+          "type": "regex",
+          "pattern": "(?is)(first usable command|copy[- ]pasteable|front door|installation.{0,80}usage|usage.{0,80}installation)",
+          "description": "Requires a concrete first-use/readability fix rather than echoing badges/quick-start words."
         },
         {
           "name": "readme-core",
           "type": "contains_any",
           "values": [
-            "score",
             "rubric",
-            "quick start",
             "source"
-          ]
+          ],
+          "description": "Prompt-echoed values removed by leakage cleanup."
         },
         {
           "name": "qualitative-review",
@@ -385,12 +373,9 @@
       "assertions": [
         {
           "name": "detect-overlong-link-docs",
-          "type": "contains_any",
-          "values": [
-            "link",
-            "docs",
-            "concise"
-          ]
+          "type": "regex",
+          "pattern": "(?is)(front door|move details|deep docs|keep.{0,80}concise|overview.{0,80}link)",
+          "description": "Requires the README-as-front-door remedy, not just the prompt wording."
         },
         {
           "name": "readme-core",
@@ -433,10 +418,10 @@
           "name": "avoid-no-invent-stars",
           "type": "contains_any",
           "values": [
-            "do not invent",
             "verify",
             "unknown"
-          ]
+          ],
+          "description": "Prompt-echoed values removed by leakage cleanup."
         },
         {
           "name": "qualitative-review",
@@ -468,10 +453,10 @@
           "name": "avoid-tiny-script-no-api-docs",
           "type": "contains_any",
           "values": [
-            "tiny",
             "proportionate",
             "no giant"
-          ]
+          ],
+          "description": "Prompt-echoed values removed by leakage cleanup."
         },
         {
           "name": "qualitative-review",
@@ -503,9 +488,9 @@
           "name": "avoid-do-not-duplicate-docs",
           "type": "contains_any",
           "values": [
-            "link",
-            "do not duplicate"
-          ]
+            "link"
+          ],
+          "description": "Prompt-echoed values removed by leakage cleanup."
         },
         {
           "name": "qualitative-review",
@@ -535,12 +520,9 @@
       "assertions": [
         {
           "name": "avoid-preserve-legal",
-          "type": "contains_any",
-          "values": [
-            "preserve",
-            "legal",
-            "security"
-          ]
+          "type": "regex",
+          "pattern": "(?is)(leave|preserve|keep|unchanged|verbatim).{0,100}(legal|security|policy|wording)|(legal|security|policy|wording).{0,100}(unchanged|verbatim|do not edit)",
+          "description": "Must keep protected wording unchanged/verbatim."
         },
         {
           "name": "qualitative-review",
@@ -570,12 +552,9 @@
       "assertions": [
         {
           "name": "avoid-missing-function-example",
-          "type": "contains_any",
-          "values": [
-            "missing",
-            "drift",
-            "do not hallucinate"
-          ]
+          "type": "regex",
+          "pattern": "(?is)(cannot verify|no replacement|ask (the )?maintainer|leave (a )?placeholder|do not invent|no source-backed replacement)",
+          "description": "Handles missing symbols by refusing to invent a replacement."
         },
         {
           "name": "qualitative-review",
@@ -818,20 +797,17 @@
       "assertions": [
         {
           "name": "names-source-evidence",
-          "type": "contains_all",
-          "values": [
-            "src/cli.ts",
-            "widget compile"
-          ]
+          "type": "regex",
+          "pattern": "(?is)(src/cli\\.ts.{0,160}widget compile|widget compile.{0,160}src/cli\\.ts)",
+          "description": "Cites current CLI source and command together."
         },
         {
           "name": "mentions-script-alias",
           "type": "contains_any",
           "values": [
-            "widgetc",
-            "package scripts",
             "script alias"
-          ]
+          ],
+          "description": "Prompt-echoed values removed by leakage cleanup."
         },
         {
           "name": "no-stale-command",
@@ -947,44 +923,148 @@
       "id": "no-source-reading",
       "removed_component": "source-code reading requirement",
       "expected_regressions": [
-        "Hallucinates README content, misses renamed/removed APIs, or rewrites from stale README examples instead of current source."
+        {
+          "summary": "README/API drift cases stop grounding corrections in source.",
+          "cases": [
+            "pos-renamed-api",
+            "round3-fixture-cli-drift"
+          ],
+          "assertions": [
+            "correct-current-import",
+            "correct-current-call",
+            "source-evidence",
+            "fixture-script-oracle"
+          ]
+        }
       ],
       "applies_to_cases": [
         "pos-renamed-api",
         "neg-missing-function-example"
-      ]
+      ],
+      "mechanism": "section",
+      "class": "instructions",
+      "target": {
+        "skill_root": "skills/good-readme/SKILL.md",
+        "heading": "## Source-Grounded API Drift Protocol"
+      },
+      "notes": "Materialized removal: runner-visible skill tree is altered by the declared mechanism/target."
     },
     {
       "id": "no-rubric",
       "removed_component": "100-point rubric scoring",
       "expected_regressions": [
-        "Unstructured improvement advice."
+        {
+          "summary": "README advice loses rubric/scoring structure.",
+          "cases": [
+            "pos-no-readme-cli",
+            "pos-badges-no-quickstart"
+          ],
+          "assertions": [
+            "readme-core"
+          ]
+        }
       ],
-      "applies_to_cases": []
+      "applies_to_cases": [],
+      "mechanism": "reference",
+      "class": "resource",
+      "target": {
+        "skill_root": "skills/good-readme/SKILL.md",
+        "path": "references/quality-checklist.md",
+        "remove": "content"
+      },
+      "notes": "Materialized removal: runner-visible skill tree is altered by the declared mechanism/target."
     },
     {
       "id": "no-ecosystem-conventions",
       "removed_component": "ecosystem convention references",
       "expected_regressions": [
-        "Wrong install/usage conventions."
+        {
+          "summary": "Ecosystem-specific README conventions are missed.",
+          "cases": [
+            "pos-python-pyproject",
+            "pos-cloudflare-worker"
+          ],
+          "assertions": [
+            "detect-python-pyproject",
+            "detect-cloudflare-worker"
+          ]
+        }
       ],
-      "applies_to_cases": []
+      "applies_to_cases": [],
+      "notes": "Materialized removal: runner-visible skill tree is altered by the declared mechanism/target.",
+      "components": [
+        {
+          "mechanism": "patch",
+          "class": "instructions",
+          "target": {
+            "skill_root": "skills/good-readme/SKILL.md",
+            "patch": "evals/ablations/no-ecosystem-conventions.patch"
+          }
+        },
+        {
+          "mechanism": "reference",
+          "class": "resource",
+          "target": {
+            "skill_root": "skills/good-readme/SKILL.md",
+            "path": "references/cloudflare.md",
+            "remove": "content"
+          }
+        }
+      ]
     },
     {
       "id": "no-antipatterns",
       "removed_component": "README anti-pattern references",
       "expected_regressions": [
-        "Misses badges/no quick start/overlong docs."
+        {
+          "summary": "README anti-patterns such as badge walls or duplicated docs are missed.",
+          "cases": [
+            "pos-badges-no-quickstart",
+            "pos-overlong-link-docs"
+          ],
+          "assertions": [
+            "detect-badges-no-quickstart",
+            "detect-overlong-link-docs"
+          ]
+        }
       ],
-      "applies_to_cases": []
+      "applies_to_cases": [],
+      "mechanism": "reference",
+      "class": "resource",
+      "target": {
+        "skill_root": "skills/good-readme/SKILL.md",
+        "path": "references/anti-patterns.md",
+        "remove": "content"
+      },
+      "notes": "Materialized removal: runner-visible skill tree is altered by the declared mechanism/target."
     },
     {
       "id": "no-audience-question",
       "removed_component": "ask audience / one thing reader should understand",
       "expected_regressions": [
-        "Generic README positioning."
+        {
+          "summary": "README creation loses audience/front-door framing.",
+          "cases": [
+            "pos-no-readme-cli",
+            "pos-web-app-demo"
+          ],
+          "assertions": [
+            "readme-core",
+            "detect-web-app-demo"
+          ]
+        }
       ],
-      "applies_to_cases": []
+      "applies_to_cases": [],
+      "mechanism": "list_item",
+      "class": "instructions",
+      "target": {
+        "skill_root": "skills/good-readme/SKILL.md",
+        "section": "### 1. Create — New README",
+        "contains": [
+          "Who is this README for"
+        ]
+      },
+      "notes": "Materialized removal: runner-visible skill tree is altered by the declared mechanism/target."
     }
   ]
 }
