@@ -15,3 +15,12 @@ jobs:
           python-version: '3.x'
       - name: Check installable skill boundary
         run: python3 scripts/check_install_boundary.py
+      - name: Run oracle self-tests
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python3 -m unittest discover -s tests -v
+      - uses: astral-sh/setup-uv@v9.0.0
+      - name: Run model-free harness gate (pinned skill-eval-harness 0.6.0)
+        run: |
+          uvx --from skill-eval-harness==0.6.0 skill-benchmark validate --strict-leakage --check-ablations evals/shared-benchmark.json
+          uvx --from skill-eval-harness==0.6.0 skill-benchmark audit-manifest --fail-on-blockers evals/shared-benchmark.json > /dev/null
