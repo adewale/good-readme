@@ -81,21 +81,25 @@ class InstallBoundaryTest(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
 
     def test_each_declaration_source_is_checked(self) -> None:
+        # Outside skills/*/ so the script's undeclared fallback glob cannot find it.
+        skill = "lib/skills/readme"
         declarations = {
-            "package.json skill.entry": {"package.json": {"skill": {"entry": f"{SKILL}/SKILL.md"}}},
-            "package.json pi.skills": {"package.json": {"pi": {"skills": ["./skills"]}}},
+            "package.json skill.entry": {"package.json": {"skill": {"entry": f"{skill}/SKILL.md"}}},
+            "package.json pi.skills": {"package.json": {"pi": {"skills": ["./lib/skills"]}}},
             "marketplace plugin skills": {".claude-plugin/marketplace.json":
-                                          {"plugins": [{"skills": [f"./{SKILL}"]}]}},
+                                          {"plugins": [{"skills": [f"./{skill}"]}]}},
         }
         for label, files in declarations.items():
             with self.subTest(label):
                 for rel, data in files.items():
                     self.write(rel, json.dumps(data))
-                self.write(f"{SKILL}/SKILL.md", "# skill")
-                self.assertEqual(run(self.root).returncode, 0)
-                self.write(f"{SKILL}/evals/case.json")
-                self.assert_fails_naming(f"{SKILL}/evals/case.json")
-                for rel in [*files, "skills"]:
+                self.write(f"{skill}/SKILL.md", "# skill")
+                result = run(self.root)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertIn(skill, result.stdout)
+                self.write(f"{skill}/evals/case.json")
+                self.assert_fails_naming(f"{skill}/evals/case.json")
+                for rel in [*files, "lib"]:
                     path = self.root / rel
                     shutil.rmtree(path) if path.is_dir() else path.unlink()
 
