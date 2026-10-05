@@ -3,13 +3,23 @@
 This repo participates in the shared Skill Eval Harness:
 
 - Repo: https://github.com/adewale/skill-eval-harness
-- Version: `>=0.3.0`
+- Version: `==0.6.0` (PyPI; the manifest's `harness.version` says the same)
 - Manifest: `evals/shared-benchmark.json`
 
-Install the harness from GitHub with [uv](https://docs.astral.sh/uv/):
+Install the pinned harness with [uv](https://docs.astral.sh/uv/):
 
 ```sh
-uv tool install git+https://github.com/adewale/skill-eval-harness.git@v0.3.0
+uv tool install skill-eval-harness==0.6.0
+```
+
+CI runs the model-free gate against that pin, plus the oracle self-tests in
+`tests/test_eval_oracles.py` (every custom check must pass a right answer and fail
+a wrong one):
+
+```sh
+uvx --from skill-eval-harness==0.6.0 skill-benchmark validate --strict-leakage --check-ablations evals/shared-benchmark.json
+uvx --from skill-eval-harness==0.6.0 skill-benchmark audit-manifest --fail-on-blockers evals/shared-benchmark.json
+python3 -m unittest discover -s tests
 ```
 
 Splits:
