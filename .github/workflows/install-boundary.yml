@@ -15,7 +15,7 @@ jobs:
           python-version: '3.x'
       - name: Check installable skill boundary
         run: python3 scripts/check_install_boundary.py
-      - name: Run oracle self-tests
+      - name: Run self-tests (oracle + install-boundary)
         env:
           PYTHONDONTWRITEBYTECODE: '1'
         run: python3 -m unittest discover -s tests -v
