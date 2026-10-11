@@ -4,7 +4,7 @@
   "harness": {
     "name": "skill-eval-harness",
     "url": "https://github.com/adewale/skill-eval-harness",
-    "version": ">=0.4.0"
+    "version": "==0.6.0"
   },
   "skill_paths": [
     "skills/good-readme/SKILL.md"
@@ -57,13 +57,9 @@
         },
         {
           "name": "readme-core",
-          "type": "contains_any",
-          "values": [
-            "score",
-            "rubric",
-            "quick start"
-          ],
-          "description": "Prompt-echoed values removed by leakage cleanup."
+          "type": "regex",
+          "pattern": "(?im)\\b\\d{1,3}\\s*(?:/|out of)\\s*100\\b|^\\s{0,3}#{1,6}\\s*(?:quick[ -]?start|getting started)\\b",
+          "description": "Applies the 100-point rubric (a total score out of 100) or gives the README a real Quick start heading; the words alone no longer pass."
         },
         {
           "name": "qualitative-review",
@@ -104,13 +100,9 @@
         },
         {
           "name": "readme-core",
-          "type": "contains_any",
-          "values": [
-            "score",
-            "rubric",
-            "quick start",
-            "source"
-          ]
+          "type": "regex",
+          "pattern": "(?im)\\b\\d{1,3}\\s*(?:/|out of)\\s*100\\b|^\\s{0,3}#{1,6}\\s*(?:quick[ -]?start|getting started)\\b",
+          "description": "Applies the 100-point rubric (a total score out of 100) or gives the README a real Quick start heading; the words alone no longer pass."
         },
         {
           "name": "qualitative-review",
@@ -147,13 +139,9 @@
         },
         {
           "name": "readme-core",
-          "type": "contains_any",
-          "values": [
-            "score",
-            "rubric",
-            "quick start",
-            "source"
-          ]
+          "type": "regex",
+          "pattern": "(?im)\\b\\d{1,3}\\s*(?:/|out of)\\s*100\\b|^\\s{0,3}#{1,6}\\s*(?:quick[ -]?start|getting started)\\b",
+          "description": "Applies the 100-point rubric (a total score out of 100) or gives the README a real Quick start heading; the words alone no longer pass."
         },
         {
           "name": "qualitative-review",
@@ -192,13 +180,9 @@
         },
         {
           "name": "readme-core",
-          "type": "contains_any",
-          "values": [
-            "score",
-            "rubric",
-            "quick start",
-            "source"
-          ]
+          "type": "regex",
+          "pattern": "(?im)\\b\\d{1,3}\\s*(?:/|out of)\\s*100\\b|^\\s{0,3}#{1,6}\\s*(?:quick[ -]?start|getting started)\\b",
+          "description": "Applies the 100-point rubric (a total score out of 100) or gives the README a real Quick start heading; the words alone no longer pass."
         },
         {
           "name": "qualitative-review",
@@ -239,13 +223,9 @@
         },
         {
           "name": "readme-core",
-          "type": "contains_any",
-          "values": [
-            "score",
-            "rubric",
-            "quick start",
-            "source"
-          ]
+          "type": "regex",
+          "pattern": "(?im)\\b\\d{1,3}\\s*(?:/|out of)\\s*100\\b|^\\s{0,3}#{1,6}\\s*(?:quick[ -]?start|getting started)\\b",
+          "description": "Applies the 100-point rubric (a total score out of 100) or gives the README a real Quick start heading; the words alone no longer pass."
         },
         {
           "name": "qualitative-review",
@@ -337,12 +317,9 @@
         },
         {
           "name": "readme-core",
-          "type": "contains_any",
-          "values": [
-            "rubric",
-            "source"
-          ],
-          "description": "Prompt-echoed values removed by leakage cleanup."
+          "type": "regex",
+          "pattern": "(?im)\\b\\d{1,3}\\s*(?:/|out of)\\s*100\\b|^\\s{0,3}#{1,6}\\s*(?:quick[ -]?start|getting started)\\b",
+          "description": "Applies the 100-point rubric (a total score out of 100) or gives the README a real Quick start heading; the words alone no longer pass."
         },
         {
           "name": "qualitative-review",
@@ -379,13 +356,9 @@
         },
         {
           "name": "readme-core",
-          "type": "contains_any",
-          "values": [
-            "score",
-            "rubric",
-            "quick start",
-            "source"
-          ]
+          "type": "regex",
+          "pattern": "(?im)\\b\\d{1,3}\\s*(?:/|out of)\\s*100\\b|^\\s{0,3}#{1,6}\\s*(?:quick[ -]?start|getting started)\\b",
+          "description": "Applies the 100-point rubric (a total score out of 100) or gives the README a real Quick start heading; the words alone no longer pass."
         },
         {
           "name": "qualitative-review",
@@ -577,6 +550,7 @@
       "id": "trig-write-readme",
       "split": "tune",
       "kind": "trigger",
+      "should_trigger": true,
       "prompt": "Trigger decision eval. User prompt: write a README\n\nReturn exactly one label first: TRIGGER or NO_TRIGGER. Then give one short reason.",
       "expected_behavior": [
         "Should return TRIGGER for this skill."
@@ -603,6 +577,7 @@
       "id": "trig-audit-readme",
       "split": "tune",
       "kind": "trigger",
+      "should_trigger": true,
       "prompt": "Trigger decision eval. User prompt: audit and score this README\n\nReturn exactly one label first: TRIGGER or NO_TRIGGER. Then give one short reason.",
       "expected_behavior": [
         "Should return TRIGGER for this skill."
@@ -629,6 +604,7 @@
       "id": "trig-improve-readme",
       "split": "tune",
       "kind": "trigger",
+      "should_trigger": true,
       "prompt": "Trigger decision eval. User prompt: improve README quality\n\nReturn exactly one label first: TRIGGER or NO_TRIGGER. Then give one short reason.",
       "expected_behavior": [
         "Should return TRIGGER for this skill."
@@ -655,6 +631,7 @@
       "id": "trig-docs-site",
       "split": "tune",
       "kind": "trigger",
+      "should_trigger": false,
       "prompt": "Trigger decision eval. User prompt: write a full docs site\n\nReturn exactly one label first: TRIGGER or NO_TRIGGER. Then give one short reason.",
       "expected_behavior": [
         "Should return NO_TRIGGER for this skill."
@@ -681,6 +658,7 @@
       "id": "trig-api-ref-only",
       "split": "tune",
       "kind": "trigger",
+      "should_trigger": false,
       "prompt": "Trigger decision eval. User prompt: generate API reference only\n\nReturn exactly one label first: TRIGGER or NO_TRIGGER. Then give one short reason.",
       "expected_behavior": [
         "Should return NO_TRIGGER for this skill."
@@ -707,6 +685,7 @@
       "id": "trig-launch-ready",
       "split": "tune",
       "kind": "trigger",
+      "should_trigger": false,
       "prompt": "Trigger decision eval. User prompt: is this repo launch-ready?\n\nReturn exactly one label first: TRIGGER or NO_TRIGGER. Then give one short reason.",
       "expected_behavior": [
         "Should return NO_TRIGGER for this skill."
@@ -742,6 +721,7 @@
         {
           "name": "qualitative-review",
           "type": "judge",
+          "gate": true,
           "rubric": [
             "Accuracy",
             "No hallucination"
@@ -770,6 +750,7 @@
         {
           "name": "private-holdback-review",
           "type": "judge",
+          "gate": true,
           "rubric": [
             "Use the private answer key; do not rely on public manifest wording."
           ]
@@ -870,12 +851,9 @@
         },
         {
           "name": "mentions-bin-alias",
-          "type": "contains_any",
-          "values": [
-            "widgetc",
-            "bin",
-            "package.json"
-          ]
+          "type": "regex",
+          "pattern": "\\bwidgetc\\b",
+          "description": "Names the package.json bin alias widgetc; 'bin' and 'package.json' alone were already required by cites-source-files."
         },
         {
           "name": "does-not-preserve-stale",
