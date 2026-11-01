@@ -101,6 +101,19 @@ Use this protocol whenever a README mentions functions, classes, imports, CLI co
 
 When reporting an audit, include a compact "Source checked" note or table for API drift findings: stale README symbol, current source symbol, evidence file, and corrected snippet.
 
+Apply the same check to setup and maintenance instructions after tooling changes.
+Search README, linked guides, package scripts, and contributor instructions for the
+retired command. For example, if `package.json` no longer defines `save:all`, remove
+that step or replace it with the source-backed current command; do not invent an
+alias to keep old prose working. Verify the replacement when feasible and state
+what was not run, especially for commands with remote side effects.
+
+Remove empty template sections and repeated setup rituals that have no current
+purpose. Keep real prerequisites, recovery instructions, migration history, and
+explicit limitations. A `TODO` heading alone does not justify a section, while an
+unfinished capability affecting users merits an honest limitation. Prefer one
+maintained setup path with links over copied command lists that drift separately.
+
 ## Per-Section Checklist
 
 ```
