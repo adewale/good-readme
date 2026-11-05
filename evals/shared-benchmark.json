@@ -894,6 +894,70 @@
         "outcome",
         "style"
       ]
+    },
+    {
+      "id": "tune-retired-setup-command",
+      "split": "tune",
+      "kind": "readme",
+      "prompt": "Audit setup docs after a tool migration. README and docs/contributing.md say pnpm run snapshot:all. package.json scripts now contain snapshot:daily (tsx scripts/daily.ts) and no snapshot:all; no compatibility alias exists. The old command also appears in a dated migration record. An empty ## Future checks section has only TODO. Do not execute snapshot:daily: it writes remote state.",
+      "expected_behavior": [
+        "Replace the live README and linked contributor command from package.json evidence without inventing an alias or silently running a remote mutation.",
+        "Report that replacement execution was not performed and why; keep the dated migration record historical.",
+        "Remove the empty future-checks placeholder without inventing a roadmap."
+      ],
+      "assertions": [
+        {
+          "name": "maintenance-evidence",
+          "type": "judge",
+          "gate": true,
+          "rubric": [
+            "Replace the live README and linked contributor command from package.json evidence without inventing an alias or silently running a remote mutation.",
+            "Report that replacement execution was not performed and why; keep the dated migration record historical.",
+            "Remove the empty future-checks placeholder without inventing a roadmap."
+          ]
+        }
+      ],
+      "tags": [
+        "maintenance",
+        "evidence-scope"
+      ],
+      "domain": "readme-quality",
+      "difficulty": "core",
+      "success_goals": [
+        "outcome"
+      ]
+    },
+    {
+      "id": "tune-keep-operational-docs",
+      "split": "tune",
+      "kind": "readme",
+      "prompt": "Review a README for ceremony. Its recovery section explains a required one-time database migration after version 2, with a working source-backed command and a warning about data loss. A limitations section says a promised export feature is unfinished and links the tracking issue. A contributor wants both removed to make setup shorter.",
+      "expected_behavior": [
+        "Keep the relevant migration and recovery instructions with their data-loss warning.",
+        "Keep the user-facing unfinished-feature limitation; do not confuse an honest constraint with an empty template section.",
+        "If proposing consolidation, retain one authoritative working path and useful links."
+      ],
+      "assertions": [
+        {
+          "name": "maintenance-evidence",
+          "type": "judge",
+          "gate": true,
+          "rubric": [
+            "Keep the relevant migration and recovery instructions with their data-loss warning.",
+            "Keep the user-facing unfinished-feature limitation; do not confuse an honest constraint with an empty template section.",
+            "If proposing consolidation, retain one authoritative working path and useful links."
+          ]
+        }
+      ],
+      "tags": [
+        "maintenance",
+        "evidence-scope"
+      ],
+      "domain": "readme-quality",
+      "difficulty": "core",
+      "success_goals": [
+        "outcome"
+      ]
     }
   ],
   "ablations": [
